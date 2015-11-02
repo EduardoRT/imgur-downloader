@@ -1,3 +1,4 @@
+<?php
 class Imgur {
 public $url;
 public $type;
