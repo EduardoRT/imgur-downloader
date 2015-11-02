@@ -1,4 +1,14 @@
 <?php
+
+try {
+    $current_user = posix_getpwuid( posix_geteuid() );
+    chdir( $current_user['dir'] . '/Desktop');
+    $imgur = new Imgur("{query}");
+    $imgur->download();
+} catch( Exception $e ) {
+    printf( $e );
+}
+
 class Imgur {
     public $url;
     public $type;
@@ -162,11 +172,3 @@ class Imgur {
 
 }
 
-try {
-    $current_user = posix_getpwuid( posix_geteuid() );
-    chdir( $current_user['dir'] . '/Desktop');
-    $imgur = new Imgur("{query}");
-    $imgur->download();
-} catch( Exception $e ) {
-    printf( $e );
-}
