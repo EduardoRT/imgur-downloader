@@ -43,10 +43,9 @@ class Imgur {
      */
     private function is_imgur( $url ) {
         $url = parse_url( $this->add_http( $url ) , PHP_URL_HOST );
+        $imgur_urls = ['imgur.com','www.imgur.com', 'i.imgur.com', 'www.i.imgur.com', 'www.m.imgur.com', 'm.imgur.com'];
 
-        if ( 'imgur.com' == $url || 'www.imgur.com' == $url ||
-            'i.imgur.com' == $url || 'www.i.imgur.com' == $url ||
-            'www.m.imgur.com' == $url || 'm.imgur.com' == $url ) {
+        if ( in_array( $url, $imgur_urls ) ) {
             return true;
         } else {
             return false;
@@ -171,4 +170,3 @@ class Imgur {
     }
 
 }
-
